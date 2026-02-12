@@ -12,11 +12,12 @@ class RegistrationForm extends Component {
   }
 
   onBlurLastName = event => {
-    if (event.target.value === '') {
-      this.setState(prevState => ({
-        showLastNameError: !prevState.showLastNameError,
-      }))
-    }
+    const {lastNameInput} = this.state
+
+    this.setState({
+      showLastNameError: event.target.value === '',
+    })
+    // if (event.target.value === '') { this.setState(prevState => ({showLastNameError: !prevState.showLastNameError,}))}
   }
 
   onChangeLastName = event => {
@@ -50,11 +51,13 @@ class RegistrationForm extends Component {
   }
 
   onBlurFirstName = event => {
-    if (event.target.value === '') {
-      this.setState(prevState => ({
-        showFirstNameError: !prevState.showFirstNameError,
-      }))
-    }
+    const {firstNameInput} = this.state
+
+    this.setState({
+      showFirstNameError: event.target.value === '',
+    })
+
+    // if (event.target.value === '') {    this.setState(prevState => ({showFirstNameError: !prevState.showFirstNameError, }))}
   }
 
   onChangeFirstName = event => {
@@ -103,7 +106,11 @@ class RegistrationForm extends Component {
     }
 
     if ((firstNameInput && lastNameInput) !== '') {
-      this.setState({isFormSubmitted: true})
+      this.setState({
+        isFormSubmitted: true,
+        showFirstNameError: false,
+        showLastNameError: false,
+      })
     } else {
       this.setState({
         isFormSubmitted: false,
